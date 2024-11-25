@@ -1,0 +1,39 @@
+# Data-Structures-in-C
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+int data;
+struct Node *next;
+};
+
+struct Node *createNode(int data)
+{
+struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+newNode->data = data;
+newNode->next = NULL;
+return newNode;
+}
+
+int isEmpty(struct Node *topnode)
+{
+return topnode==NULL;
+}
+
+void push(struct Node **topnode,int data)
+{
+struct Node *newnode = createNode(data);
+newnode->next = *topnode;
+*topnode = newnode;
+printf("Value pushed: %d\n",newnode->data);
+}
+
+void pop(struct Node **topnode)
+{
+if(isEmpty(*topnode))
+{
+printf("Stack underflow..\n");
+return;
+}
+struct Node *temp = *topnode;
