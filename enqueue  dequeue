@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include<stdlib.h>
+int queue[100];
+int size=5;
+int front=-1,rear=-1;
+void enqueue(int data)
+{
+    if(rear==size)
+{
+    printf("Queue Overflow\n");
+    return;
+}
+if(front==-1)
+{
+    front=0;
+}
+else
+{
+    front=0;
+}
+queue[++rear]=data;
+}
+void dequeue()
+{
+    if(front==-1||front>rear)
+    {
+        printf("Queue underflow");
+    }else{
+        printf("\n  deleted element=>%d\n",queue[front]);
+        front++;
+    }
+}
+void view()
+{
+    printf("\n top element is %d ",queue[front]);
+    printf("\n%d",queue[rear]);
+}
+void display()
+{
+    for(int i=front;i<=rear;i++)
+    {
+        printf("%d ",queue[i]);
+    }
+}
+int main()
+{
+    enqueue(12);
+    enqueue(13);
+    enqueue(14);
+    enqueue(15);
+    enqueue(16);
+    display();
+    dequeue();
+    display();
+    view();
+    dequeue();
+    return 0;
+}
