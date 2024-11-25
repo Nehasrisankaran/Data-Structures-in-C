@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct treeNode{
+    int data;
+    struct treeNode *left;
+    struct treeNode *right;
+};
+struct treeNode *createNode(int data){
+    struct treeNode *newNode=(struct treeNode*)malloc(sizeof(struct treeNode));
+    newNode->data=data;
+    newNode->left=NULL;
+    newNode->right=NULL;
+    return newNode;
+}
+struct treeNode*InsertNode(struct treeNode *root,int data){
+    if(root==NULL){
+        return createNode(data);
+    }
+    if(data<root->data){
+        root->left=InsertNode(root->left,data);
+    }else if(data>root->data){
+        root->right=InsertNode(root->right,data);
+    }
+    return root;
+    }
+    void displayLevels(struct treeNode *root){
+        if(root==NULL){
+            printf("The tree is empty\n");
+            return;
+        }
+        printf("root Node:%d\n",root->data);
+if(root->left!=NULL){
+    printf("left child of Root:%d\n",root->left->data);
+}else{
+    printf("left child of Root:NULL\n");
+}
+if(root->right!=NULL){
+    printf("right child of root:%d\n",root->right->data);
+}else{
+    printf("right child of root:NULL\n");
+}
+        
+   if(root->left!=NULL && root->left->left!=NULL)
+{
+    printf("Left Grandchild of root:%d\n",root->left->left->data);
+}
+if(root->left!=NULL && root->left->right!=NULL)
+{
+    printf("Right Grandchild of left child:%d\n",root->left->right->data);
+}
+if(root->right!=NULL && root->right->left!=NULL)
+{
+    printf("Left Grandchild of right child:%d\n",root->right->left->data);
+}
+if(root->right!=NULL && root->right->right!=NULL)
+{
+    printf("Right Grandchild of root:%d\n",root->right->right->data);
+}
+}
+int main()
+{
+    struct treeNode*root=NULL;
+    root=InsertNode(root,50);
+    root=InsertNode(root,30);
+    root=InsertNode(root,70);
+    root=InsertNode(root,20);
+    root=InsertNode(root,40);
+    root=InsertNode(root,60);
+    root=InsertNode(root,80);
+   
+    displayLevels(root);
+    return 0;
+}
