@@ -1,0 +1,31 @@
+//implement a program to stack using linked list
+#include<stdio.h>
+#include<stdlib.h>
+//#include<conio.h>
+//pop pushint display
+void pop();
+void push(int value);
+void display();
+//struct node creation
+struct node{
+    int data;
+    struct node*next;
+};
+//struct nodes top=null,temp var
+struct node*top=NULL,*temp;
+//main,int ch,dt,while true(1)pfpushpopdis pf enter choice,sf&choice,switch choice
+void main(){
+    int choice,data;
+    while(1){
+        printf("\n1.push\n2.pop\n3.display\n4.exit\n");
+        printf("Enter your choice");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+            printf("new el:");
+            scanf("%d",&data);
+            push(data);
+            break;
+              case 2:
+              pop();
+         …
